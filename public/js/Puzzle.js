@@ -11,6 +11,7 @@ export default class Puzzle {
             }
             this.mat.push(row);
         }
+        console.table(this.mat);
     }
     set(i, j, value) {
         this.mat[i][j] = value;

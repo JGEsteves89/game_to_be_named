@@ -16,9 +16,11 @@ export function loadLevel(name) {
 }
 
 export function loadSprites(image, sw, sh){
+    const tileWidth = 31;
+    const tileHeight = 31;
     const sprites = new SpriteSheet(image, sw, sh);
     for (let i = 0; i < 8; i++) {
-        sprites.define(i, 4, 4 + i * 33);
+        sprites.define(i, 4, 4 + i * 33, tileWidth, tileHeight);
     }
     return sprites;
 }

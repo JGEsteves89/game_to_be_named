@@ -5,8 +5,7 @@ export default class Level {
         this.sketcher = sketcher;
         this.timer = timer;
         this.puzzle = new Puzzle(levelSpec);
-        this.puzzle.pitch(1, 1);
-        this.puzzle.yawn(1, 1);
+        this.isMouseDown = false;
     }
 
     update(deltaTime) {
@@ -17,13 +16,19 @@ export default class Level {
         this.timer.startTimer(this.update.bind(this));
     }
 
-    mouseDown(e) {
-        const i = e.layerX / this.sketcher.sw | 0;
-        const j = e.layerY / this.sketcher.sh | 0;
-        console.log(i,j);
+    mouseDown(event) {
+        this.isMouseDown = true;
+        const j = event.layerX / this.sketcher.sw | 0;
+        const i = event.layerY / this.sketcher.sh | 0;
+        this.sketcher.select(i,j);
     }
     mouseUp(event) {
+        this.isMouseDown = false;
+        this.sketcher.deselect();
     }
     mouseMove(event) {
+
     }
+
+
 }
