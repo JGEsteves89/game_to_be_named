@@ -1,8 +1,8 @@
 import Puzzle from "./Puzzle.js";
 
 export default class Level {
-    constructor(levelSpec, drawer, timer) {
-        this.drawer = drawer;
+    constructor(levelSpec, sketcher, timer) {
+        this.sketcher = sketcher;
         this.timer = timer;
         this.puzzle = new Puzzle(levelSpec);
         this.puzzle.pitch(1, 1);
@@ -10,7 +10,7 @@ export default class Level {
     }
 
     update(deltaTime) {
-        this.drawer.drawPuzzle(this.puzzle);
+        this.sketcher.drawPuzzle(this.puzzle);
     }
 
     start() {
@@ -18,10 +18,9 @@ export default class Level {
     }
 
     mouseDown(e) {
-        const i = ~~(e.y / this.drawer.sw);
-        const j = ~~(e.x / this.drawer.sh);
-        console.log(i, j);
-
+        const i = e.layerX / this.sketcher.sw | 0;
+        const j = e.layerY / this.sketcher.sh | 0;
+        console.log(i,j);
     }
     mouseUp(event) {
     }

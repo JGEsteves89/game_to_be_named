@@ -1,6 +1,6 @@
 import { loadSprites } from "./loaders.js";
 
-export default class Drawer {
+export default class Sketcher {
     constructor(context, image) {
         this.context = context;
         this.sw = 31;
