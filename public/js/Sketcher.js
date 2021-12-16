@@ -1,5 +1,5 @@
-import { CanvasSketcher } from "./CanvasSketcher.js";
-import { loadSprites } from "./loaders.js";
+import CanvasSketcher from './CanvasSketcher.js';
+import { loadSprites } from './loaders.js';
 
 export default class Sketcher {
 	constructor(context, image) {
@@ -9,6 +9,7 @@ export default class Sketcher {
 		this.sprites = loadSprites(image, this.sw, this.sh);
 		this.canvas = new CanvasSketcher(this.sprites);
 	}
+
 	drawPuzzle(puzzle) {
 		for (let i = 0; i < puzzle.nr; i++) {
 			for (let j = 0; j < puzzle.nc; j++) {
@@ -24,6 +25,7 @@ export default class Sketcher {
 		this.selected = { i, j };
 		console.log('Selected', i, j);
 	}
+
 	deselect() {
 		this.selected = undefined;
 	}

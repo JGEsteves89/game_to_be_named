@@ -13,15 +13,17 @@ export default class Puzzle {
 		}
 		console.table(this.mat);
 	}
+
 	set(i, j, value) {
 		this.mat[i][j] = value;
 	}
+
 	get(i, j) {
 		return this.mat[i][j];
 	}
 
 	pitch(col, dis) {
-		const copyMat = this.mat.map((r) => [...r]);
+		const copyMat = this.mat.map(r => [...r]);
 		for (let i = 0; i < this.nr; i++) {
 			const newI = this.resolveIndex(i, dis, this.nr);
 			this.mat[newI][col] = copyMat[i][col];
@@ -29,7 +31,7 @@ export default class Puzzle {
 	}
 
 	yawn(row, dis) {
-		const copyMat = this.mat.map((r) => [...r]);
+		const copyMat = this.mat.map(r => [...r]);
 		for (let j = 0; j < this.nc; j++) {
 			const newJ = this.resolveIndex(j, dis, this.nc);
 			this.mat[row][newJ] = copyMat[row][j];
@@ -38,7 +40,7 @@ export default class Puzzle {
 
 	resolveIndex(i, dist, total) {
 		let newI = i + dist;
-		newI = newI % total;
+		newI %= total;
 		if (newI < 0) {
 			newI = total + newI;
 		}

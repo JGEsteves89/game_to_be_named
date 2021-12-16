@@ -10,7 +10,7 @@ export default class Timer {
 	startTimer(callbackFunction) {
 		let now = new Date().getTime();
 		let lastTime = now;
-		let setFps = this.setFps.bind(this);
+		const setFps = this.setFps.bind(this);
 		function update(totalTime) {
 			now = totalTime;
 			const deltaTime = now - lastTime;

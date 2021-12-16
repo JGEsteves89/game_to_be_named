@@ -1,11 +1,31 @@
 module.exports = {
-	"env": {
-		"browser": true,
-		"es2021": true
+	env: {
+		browser: true,
+		es2021: true
 	},
-	"extends": [
-		"eslint:recommended",
-		"prettier"
+	extends: [
+		'airbnb-base'
 	],
-	"indent": ["error", "tab"]
+	parserOptions: {
+		ecmaVersion: 13,
+		sourceType: 'module'
+	},
+	rules: {
+		indent: ['error', 'tab'],
+		quotes: ['error', 'single'],
+		'no-tabs': 0,
+		'no-unused-vars': 1,
+		'no-bitwise': 0,
+		'no-plusplus': 0,
+		'arrow-parens': ['error', 'as-needed'],
+		'comma-dangle': 0,
+		'no-mixed-operators': 0,
+		'import/extensions': 0,
+		'class-methods-use-this': 0
+	},
+	overrides: [
+		{
+			files: ['public/']
+		}
+	]
 };

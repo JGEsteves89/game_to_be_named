@@ -17,6 +17,7 @@ Promise.all([
 	const mouseInput = new MouseInput(
 		level.mouseDown.bind(level),
 		level.mouseMove.bind(level),
-		level.mouseUp.bind(level));
+		level.mouseUp.bind(level)
+	);
 	level.start();
 });

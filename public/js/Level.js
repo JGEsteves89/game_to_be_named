@@ -1,4 +1,4 @@
-import Puzzle from "./Puzzle.js";
+import Puzzle from './Puzzle.js';
 
 export default class Level {
 	constructor(levelSpec, sketcher, timer) {
@@ -25,7 +25,7 @@ export default class Level {
 
 	/**
 	 * Callback for when there is a mouse down
-	 * @param {event} event mouse down event 
+	 * @param {event} event mouse down event
 	 */
 	mouseDown(event) {
 		this.isMouseDown = true;
@@ -36,7 +36,7 @@ export default class Level {
 
 	/**
 	 * Callback for when the mouse is up
-	 * @param {event} event mouse up event 
+	 * @param {event} event mouse up event
 	 */
 	mouseUp(event) {
 		this.isMouseDown = false;
@@ -45,10 +45,11 @@ export default class Level {
 
 	/**
 	 * Callback for when the mouse moves
-	 * @param {event} event mouse move event 
+	 * @param {event} event mouse move event
 	 */
 	mouseMove(event) {
+		if (this.isMouseDown) {
+			console.log('MouseMove');
+		}
 	}
-
-
 }
