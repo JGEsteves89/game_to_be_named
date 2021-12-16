@@ -1,16 +1,17 @@
 {
-  "name": "game-to-be-name",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "live-server ./public",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+	"name": "game-to-be-name",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "live-server ./public",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^8.4.1",
+		"eslint-config-prettier": "^8.3.0",
+		"live-server": "^1.1.0"
+	}
 }
