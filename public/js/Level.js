@@ -1,3 +1,4 @@
+import PuzzleController from './PuzzleController.js';
 import Puzzle from './Puzzle.js';
 
 export default class Level {
@@ -5,51 +6,38 @@ export default class Level {
 		this.sketcher = sketcher;
 		this.timer = timer;
 		this.puzzle = new Puzzle(levelSpec);
-		this.isMouseDown = false;
+		this.controller = new PuzzleController(this.puzzle, this.sketcher);
 	}
 
-	/**
-	 * Level update loop that draws and updates elements
-	 * @param deltaTime Delta time since last update
-	 */
 	update(deltaTime) {
-		this.sketcher.drawPuzzle(this.puzzle);
+		this.controller.drawPuzzle();
 	}
 
-	/**
-	 * Starts the main loop of level update
-	 */
 	start() {
 		this.timer.startTimer(this.update.bind(this));
 	}
 
-	/**
-	 * Callback for when there is a mouse down
-	 * @param {event} event mouse down event
-	 */
 	mouseDown(event) {
 		this.isMouseDown = true;
 		const j = event.layerX / this.sketcher.sw | 0;
 		const i = event.layerY / this.sketcher.sh | 0;
-		this.sketcher.select(i, j);
+		if (i >= 0
+			&& j >= 0
+			&& i < this.puzzle.nr
+			&& j < this.puzzle.nc) {
+			this.controller.select(i, j);
+		}
 	}
 
-	/**
-	 * Callback for when the mouse is up
-	 * @param {event} event mouse up event
-	 */
 	mouseUp(event) {
-		this.isMouseDown = false;
-		this.sketcher.deselect();
+		this.controller.deselect();
 	}
 
-	/**
-	 * Callback for when the mouse moves
-	 * @param {event} event mouse move event
-	 */
 	mouseMove(event) {
-		if (this.isMouseDown) {
-			console.log('MouseMove');
+		if (this.controller.selected) {
+			const dx = event.movementX;
+			const dy = event.movementY;
+			this.controller.move(dx, dy);
 		}
 	}
 }

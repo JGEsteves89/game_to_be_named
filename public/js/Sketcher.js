@@ -10,12 +10,30 @@ export default class Sketcher {
 		this.canvas = new CanvasSketcher(this.sprites);
 	}
 
-	drawPuzzle(puzzle) {
+	drawPuzzle(puzzle, selected) {
 		for (let i = 0; i < puzzle.nr; i++) {
 			for (let j = 0; j < puzzle.nc; j++) {
-				this.canvas.drawTile(puzzle.get(i, j), this.context, i, j, this.sw, this.sh);
+				const movementDisplacement = { dx: 0, dy: 0 };
+				if (selected) {
+					if (selected.dx > 0 && selected.i === i) {
+						movementDisplacement.dx = selected.dx;
+					} else if (selected.dy > 0 && selected.j === j) {
+						movementDisplacement.dy = selected.dy;
+					}
+				}
+
+				this.canvas.drawTile(
+					puzzle.get(i, j),
+					this.context,
+					i,
+					j,
+					this.sw,
+					this.sh,
+					movementDisplacement
+				);
+
 				if (this.selected && this.selected.i === i && this.selected.j === j) {
-					this.canvas.drawSelected(this.context, i, j, this.sw, this.sh);
+					this.canvas.drawSelected(this.context, i, j, this.sw, this.sh, movementDisplacement);
 				}
 			}
 		}
@@ -23,7 +41,6 @@ export default class Sketcher {
 
 	select(i, j) {
 		this.selected = { i, j };
-		console.log('Selected', i, j);
 	}
 
 	deselect() {

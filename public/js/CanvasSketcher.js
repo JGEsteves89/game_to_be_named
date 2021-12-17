@@ -3,19 +3,18 @@ export default class CanvasSketcher {
 		this.spriteSheet = spriteSheet;
 	}
 
-	drawSelected(context, i, j, sw, sh) {
-		const x = j * sw;
-		const y = i * sh;
+	drawSelected(context, i, j, sw, sh, dxy) {
+		const x = j * sw + dxy.dx;
+		const y = i * sh + dxy.dy;
 		context.globalAlpha = 0.1;
 		context.fillRect(x, y, sw, sh);
-
-		console.log('Drawing in ', x, y);
+		context.globalAlpha = 1;
 	}
 
-	drawTile(name, context, i, j, sw, sh) {
+	drawTile(name, context, i, j, sw, sh, dxy) {
+		const x = j * sw + dxy.dx;
+		const y = i * sh + dxy.dy;
 		const buffer = this.spriteSheet.tiles.get(name);
-		const x = j * sw;
-		const y = i * sh;
 		context.drawImage(buffer, x, y);
 	}
 }
