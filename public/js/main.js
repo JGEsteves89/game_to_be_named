@@ -3,7 +3,7 @@ import Level from './Level.js';
 import PuzzleSketcher from './PuzzleSketcher.js';
 import Puzzle from './Puzzle.js';
 import Timer from './Timer.js';
-import MouseInput from './MouseInput.js';
+import PuzzleController from './PuzzleController.js';
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
@@ -14,13 +14,20 @@ Promise.all([
 	loadLevel('1-1')
 ]).then(([image, levelSpec]) => {
 	const puzzle = new Puzzle(levelSpec);
-	const sketcher = new PuzzleSketcher(context, puzzle, image);
-	const level = new Level(puzzle, sketcher, timer);
 
-	const mouseInput = new MouseInput(
-		level.mouseDown.bind(level),
-		level.mouseMove.bind(level),
-		level.mouseUp.bind(level)
+	const sketcher = new PuzzleSketcher(
+		context,
+		puzzle,
+		image,
+		canvas.clientWidth,
+		canvas.clientHeight
 	);
+	const controller = new PuzzleController(puzzle, sketcher);
+	const level = new Level(controller, timer);
+
+	canvas.onmousedown = controller.mouseDown.bind(controller, canvas);
+	window.addEventListener('mousemove', controller.mouseMove.bind(controller, canvas));
+	window.addEventListener('mouseup', controller.mouseUp.bind(controller, canvas));
+
 	level.start();
 });

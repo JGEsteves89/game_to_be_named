@@ -1,17 +1,16 @@
+import Tile from './Tile.js';
+
 export default class Puzzle {
 	constructor(puzzleSpec) {
-		this.mat = [];
+		this.tiles = [];
 
 		this.rows = puzzleSpec.rows;
 		this.cols = puzzleSpec.cols;
 		for (let i = 0; i < this.rows; i++) {
-			const row = [];
 			for (let j = 0; j < this.cols; j++) {
-				row.push(puzzleSpec.target[i * this.cols + j]);
+				this.tiles.push(new Tile(i, j, puzzleSpec.target[i * this.cols + j]));
 			}
-			this.mat.push(row);
 		}
-		console.table(this.mat);
 	}
 
 	validateIndex(i, j) {
@@ -20,32 +19,37 @@ export default class Puzzle {
 		return { ni, nj };
 	}
 
-
 	set(i, j, value) {
 		const { ni, nj } = this.validateIndex(i, j);
-		this.mat[ni][nj] = value;
-	}
-
-	get(i, j) {
-		console.log(i, j);
-		const { ni, nj } = this.validateIndex(i, j);
-		console.log(ni, nj);
-		return this.mat[ni][nj];
-	}
-
-	pitch(col, dis) {
-		const copyMat = this.mat.map(r => [...r]);
-		for (let i = 0; i < this.rows; i++) {
-			const newI = this.resolveIndex(i, dis, this.rows);
-			this.mat[newI][col] = copyMat[i][col];
+		const tile = this.get(ni, nj);
+		if (tile) {
+			tile.value = value;
 		}
 	}
 
-	yawn(row, dis) {
-		const copyMat = this.mat.map(r => [...r]);
-		for (let j = 0; j < this.cols; j++) {
-			const newJ = this.resolveIndex(j, dis, this.cols);
-			this.mat[row][newJ] = copyMat[row][j];
+	get(i, j) {
+		const { ni, nj } = this.validateIndex(i, j);
+		for (const tile of this.tiles) {
+			if (tile.i === ni && tile.j === nj) {
+				return tile;
+			}
+		}
+		return undefined;
+	}
+
+	yawn(row, displacement) {
+		for (const tile of this.tiles) {
+			if (tile.i === row) {
+				tile.j = this.resolveIndex(tile.j, displacement, this.cols);
+			}
+		}
+	}
+
+	pitch(col, displacement) {
+		for (const tile of this.tiles) {
+			if (tile.j === col) {
+				tile.i = this.resolveIndex(tile.i, displacement, this.rows);
+			}
 		}
 	}
 
