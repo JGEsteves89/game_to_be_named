@@ -1,4 +1,4 @@
-import { loadImage, loadLevel } from './loaders.js';
+import { loadImage, loadLevelImage } from './loaders.js';
 import Level from './Level.js';
 import PuzzleSketcher from './PuzzleSketcher.js';
 import Puzzle from './Puzzle.js';
@@ -10,15 +10,14 @@ const context = canvas.getContext('2d');
 const timer = new Timer();
 
 Promise.all([
-	loadImage('/img/tiles.png'),
-	loadLevel('1-1')
-]).then(([image, levelSpec]) => {
+	loadImage('/levels/1x1.png'),
+]).then(([levelImage]) => {
+	const levelSpec = loadLevelImage(levelImage);
 	const puzzle = new Puzzle(levelSpec);
 
 	const sketcher = new PuzzleSketcher(
 		context,
 		puzzle,
-		image,
 		canvas.clientWidth,
 		canvas.clientHeight
 	);

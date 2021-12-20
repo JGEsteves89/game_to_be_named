@@ -1,17 +1,15 @@
 import CanvasSketcher from './CanvasSketcher.js';
 import PuzzleCamera from './PuzzleCamera.js';
-import { loadSprites } from './loaders.js';
 import Drawable from './Drawable.js';
 
 export default class PuzzleSketcher {
-	constructor(context, puzzle, image, frameWidth, frameHeight) {
+	constructor(context, puzzle, frameWidth, frameHeight) {
 		this.context = context;
 		this.frame = new Drawable(0, 0, frameWidth, frameHeight);
 		this.tileWidth = this.frame.width / puzzle.cols;
 		this.tileHeight = this.frame.height / puzzle.rows;
 		this.puzzle = puzzle;
-		this.sprites = loadSprites(image, this.tileWidth, this.tileHeight);
-		this.canvas = new CanvasSketcher(this.sprites);
+		this.canvas = new CanvasSketcher();
 		this.camera = new PuzzleCamera(this.context.size, puzzle, this.tileWidth, this.tileHeight);
 
 		for (const tile of this.puzzle.tiles) {
