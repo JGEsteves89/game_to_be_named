@@ -13,12 +13,6 @@ export default class PuzzleController {
 	}
 
 	update(deltaTime) {
-		for (const tile of this.puzzle.tiles) {
-			const x = tile.j * this.sketcher.tileWidth;
-			const y = tile.i * this.sketcher.tileHeight;
-			tile.plot(x, y, this.sketcher.tileWidth, this.sketcher.tileHeight);
-		}
-
 		if (this.drag !== Direction.unknown) {
 			for (const tile of this.puzzle.tiles) {
 				if (this.drag.direction === Direction.x) {
