@@ -11,7 +11,6 @@ export default class PuzzleSketcher {
 		this.puzzle = puzzle;
 		this.canvas = new CanvasSketcher();
 		this.camera = new PuzzleCamera(this.context.size, puzzle, this.tileWidth, this.tileHeight);
-
 		for (const tile of this.puzzle.tiles) {
 			const x = tile.j * this.tileWidth;
 			const y = tile.i * this.tileHeight;

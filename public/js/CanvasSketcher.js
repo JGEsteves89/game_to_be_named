@@ -21,17 +21,18 @@ export default class CanvasSketcher {
 	}
 
 	drawTile(tile, context) {
-		const m = 2;
+		const tileMargin = 0.04 * tile.width;
+		const radius = 0.04 * tile.width;
 		context.fillStyle = 'black';
 		context.fillRect(tile.left, tile.top, tile.width, tile.height);
 
 		context.fillStyle = `rgb(${tile.value.r}, ${tile.value.g}, ${tile.value.b})`;
 		this.drawRoundRect(
-			tile.left + m,
-			tile.top + m,
-			tile.width - 2 * m,
-			tile.height - 2 * m,
-			2 * m,
+			tile.left + tileMargin,
+			tile.top + tileMargin,
+			tile.width - 2 * tileMargin,
+			tile.height - 2 * tileMargin,
+			radius,
 			context
 		);
 		if (tile.selected) {

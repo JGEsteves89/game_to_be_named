@@ -14,7 +14,8 @@ Promise.all([
 ]).then(([levelImage]) => {
 	const levelSpec = loadLevelImage(levelImage);
 	const puzzle = new Puzzle(levelSpec);
-
+	canvas.setAttribute('width', canvas.clientWidth);
+	canvas.setAttribute('height', canvas.clientHeight);
 	const sketcher = new PuzzleSketcher(
 		context,
 		puzzle,

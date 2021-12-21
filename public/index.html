@@ -1,12 +1,99 @@
 <html>
 
 <head>
+	<style>
+		body {
+			background-image: url("imgs/background.png");
+			background-repeat: repeat;
+		}
+
+		.topnav {
+			background-color: #191414;
+			overflow: hidden;
+			align-content: center;
+			display: grid;
+			z-index: 1;
+		}
+
+		.topnav a {
+			float: left;
+			color: #1db954;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+			font-family: sans-serif;
+		}
+
+		.centered {
+			position: absolute;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-38%, 8%);
+			height: 78vw;
+			width: 78vw;
+		}
+
+		.sidenav {
+			height: 100%;
+			/* Full-height: remove this if you want "auto" height */
+			width: 5vw;
+			/* Set the width of the sidebar */
+			position: fixed;
+			/* Fixed Sidebar (stay in place on scroll) */
+			z-index: -1;
+			/* Stay on top */
+			top: 0;
+			/* Stay at the top */
+			left: 0;
+			background-color: #1db954;
+			/* Black */
+			overflow-x: hidden;
+			/* Disable horizontal scroll */
+			padding-top: 20px;
+		}
+
+		.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			height: 5vw;
+			width: 100%;
+			background-color: #1db954;
+			color: white;
+			text-align: center;
+		}
+
+		.miniframe {
+			height: 20vw;
+			width: 19vw;
+			margin-top: -14vw;
+			background-color: #1db954;
+		}
+
+		.minimap {
+			height: 15vw;
+			width: 15vw;
+			margin-top: 2vw;
+			image-rendering: pixelated;
+		}
+	</style>
 	<title>To be Named game</title>
 	<script type="module" src="/js/main.js"></script>
 </head>
 
 <body style="background-color: #000000;">
-	<canvas id="screen" width="500" height="500"></canvas>
+	<div class="topnav">
+		<a>to-be-named</a>
+	</div>
+	<div class="sidenav">
+	</div>
+	<canvas class="centered fillScreen" id="screen"></canvas>
+	<div class="footer">
+		<div class="miniframe">
+			<img class="minimap" src="./levels/1x1.png" />
+		</div>
+	</div>
 </body>
 
 </html>
