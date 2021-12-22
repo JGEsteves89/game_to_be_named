@@ -1,0 +1,41 @@
+[
+    {
+        "name": "1x1",
+        "image": "./levels/1x1.png"
+    },
+    {
+        "name": "1x2",
+        "image": "./levels/1x2.png"
+    },
+    {
+        "name": "1x3",
+        "image": "./levels/1x3.png"
+    },
+    {
+        "name": "1x4",
+        "image": "./levels/1x4.png"
+    },
+    {
+        "name": "2x1",
+        "image": "./levels/2x1.png"
+    },
+    {
+        "name": "2x2",
+        "image": "./levels/2x2.png"
+    },    {
+        "name": "2x3",
+        "image": "./levels/2x3.png"
+    },    {
+        "name": "2x4",
+        "image": "./levels/2x4.png"
+    },    {
+        "name": "2x5",
+        "image": "./levels/2x5.png"
+    },    {
+        "name": "2x7",
+        "image": "./levels/2x7.png"
+    },    {
+        "name": "3x1",
+        "image": "./levels/3x1.png"
+    }
+]

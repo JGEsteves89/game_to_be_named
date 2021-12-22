@@ -36,11 +36,6 @@ export function loadLevelImage(image) {
 	return { rows, cols, target };
 }
 
-export function loadLevel(name) {
-	return fetch(`/levels/${name}.json`)
-		.then(r => r.json());
-}
-
 export function loadSprites(image, sw, sh) {
 	const tileWidth = 31;
 	const tileHeight = 31;
@@ -49,4 +44,9 @@ export function loadSprites(image, sw, sh) {
 		sprites.define(i, 4, 4 + i * 33, tileWidth, tileHeight);
 	}
 	return sprites;
+}
+
+export function loadAllLevels(allLevels) {
+	return fetch(allLevels)
+		.then(r => r.json());
 }

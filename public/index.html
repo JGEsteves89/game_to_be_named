@@ -2,65 +2,35 @@
 
 <head>
 	<style>
+		* {
+			font-family: sans-serif;
+		}
+
 		body {
 			background-image: url("imgs/background.png");
 			background-repeat: repeat;
 		}
 
-		.centered {
-			position: absolute;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-38%, 8%);
-			height: 78%;
-			width: 78%;
-			max-width: 78vh;
-			max-height: 78vw;
-			user-select: none;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-		}
-
-		.sidenav {
-			height: 100%;
-			/* Full-height: remove this if you want "auto" height */
-			width: 5vw;
-			/* Set the width of the sidebar */
-			position: fixed;
-			/* Fixed Sidebar (stay in place on scroll) */
-			z-index: -1;
-			/* Stay on top */
-			top: 0;
-			/* Stay at the top */
-			left: 0;
+		.column {
+			float: left;
+			width: 30.33%;
+			margin: 1%;
 			background-color: #1db954;
-			/* Black */
-			overflow-x: hidden;
-			/* Disable horizontal scroll */
-			padding-top: 20px;
-		}
-
-		.footer {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			height: 5vw;
-			width: 100%;
-			background-color: #1db954;
-			color: white;
 			text-align: center;
+			cursor: pointer;
 		}
 
-		.miniframe {
-			height: 20vw;
-			width: 19vw;
-			margin-top: -14vw;
-			background-color: #1db954;
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
 		}
 
 		.minimap {
-			height: 15vw;
-			width: 15vw;
+			height: auto;
+			width: 90%;
 			margin-top: 2vw;
 			image-rendering: pixelated;
 		}
@@ -70,17 +40,18 @@
 </head>
 
 <body style="background-color: #000000;">
-	<div class="sidenav">
-		<div id = "debug">
+	<template>
+		<div id="row" class="row">
 		</div>
-	</div>
-	<canvas class="centered fillScreen" id="screen"></canvas>
-	<div class="footer">
-		<div class="miniframe">
-			<img class="minimap" src="./levels/1x1.png" />
+	</template>
+	<template>
+		<div class="column">
+			<a href="level.html?level={LVL_NAME}">
+				<img class="minimap" src="{IMG_URL}" />
+				<h2>{LVL_NAME}</h2>
+			</a>
 		</div>
-	
-	</div>
+	</template>
 </body>
 
 </html>

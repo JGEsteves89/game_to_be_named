@@ -3,7 +3,7 @@ import Tile from './Tile.js';
 export default class Puzzle {
 	constructor(puzzleSpec) {
 		this.tiles = [];
-		this.shuffles = 20;
+		this.shuffles = 5;
 		this.hasFinish = false;
 		this.rows = puzzleSpec.rows;
 		this.cols = puzzleSpec.cols;
@@ -66,15 +66,17 @@ export default class Puzzle {
 
 	shuffle() {
 		let yawn = -1;
-		while (this.getDifferences() < this.shuffles) {
-			const smallest = this.cols > this.rows ? this.rows : this.cols;
-			const index = Math.random() * smallest | 0;
-			const disp = Math.random() * smallest | 0;
-			yawn *= -1;
-			if (yawn === 1) {
-				this.yawn(index, disp);
-			} else {
-				this.pitch(index, disp);
+		while (this.isComplete()) {
+			for (let i = 0; i < this.shuffles; i++) {
+				const smallest = this.cols > this.rows ? this.rows : this.cols;
+				const index = Math.random() * smallest | 0;
+				const disp = Math.random() * smallest | 0;
+				yawn *= -1;
+				if (yawn === 1) {
+					this.yawn(index, disp);
+				} else {
+					this.pitch(index, disp);
+				}
 			}
 		}
 	}
@@ -84,7 +86,6 @@ export default class Puzzle {
 			for (let j = 0; j < this.cols; j++) {
 				if (!this.isEqual(this.get(i, j).value, this.target[i * this.cols + j])) {
 					this.hasFinish = false;
-					console.log(i, j, this.get(i, j).value, this.target[i * this.cols + j]);
 					return false;
 				}
 			}
@@ -93,17 +94,6 @@ export default class Puzzle {
 		return true;
 	}
 
-	getDifferences() {
-		let count = 0;
-		for (let i = 0; i < this.rows; i++) {
-			for (let j = 0; j < this.cols; j++) {
-				if (!this.isEqual(this.get(i, j).value, this.target[i * this.cols + j])) {
-					count++;
-				}
-			}
-		}
-		return count;
-	}
 
 	isEqual(a, b) {
 		return a.r === b.r && a.g === b.g && a.b === b.b && a.a === b.a;

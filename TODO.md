@@ -6,14 +6,14 @@
  - [X] - Make layout responsive
  - [X] - check if the game as finished
  - [X] - create system to shuffle puzzle
+ - [X] - create puzzle selection
+ - [X] - create more simple puzzles
 
 
+ - [] - create score
  - [] - Create animation when the puzzle is finished
  - [] - Refactor the current controller
  - [] - Select miniature view to see
- - [] - create score
- - [] - create more simple puzzles
- - [] - create puzzle selection
  - [] - create main menu
  - [] - check puzzle which were already resolved
  - [] - create back to selection
