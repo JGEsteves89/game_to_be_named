@@ -10,6 +10,7 @@
  - [X] - create more simple puzzles
 
 
+ - [] - Make work on the phone
  - [] - create score
  - [] - Create animation when the puzzle is finished
  - [] - Refactor the current controller
