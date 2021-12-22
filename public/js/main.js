@@ -2,7 +2,7 @@
 import { loadAllLevels } from './loaders.js';
 
 Promise.all([
-	loadAllLevels('/levels/AllLevels.json'),
+	loadAllLevels('./levels/AllLevels.json'),
 ]).then(([allLevels]) => {
 	const rowTemplate = document.getElementsByTagName('template')[0];
 	const columnTemplate = document.getElementsByTagName('template')[1];
