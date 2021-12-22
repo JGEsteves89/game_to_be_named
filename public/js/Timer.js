@@ -16,6 +16,7 @@ export default class Timer {
 			const deltaTime = now - lastTime;
 			lastTime = now;
 			setFps(60 * 1000 / deltaTime);
+			document.getElementById("debug").innerText = Math.floor((60 * 1000 / deltaTime)) + ' FPS';
 			callbackFunction(deltaTime);
 			requestAnimationFrame(update);
 		}

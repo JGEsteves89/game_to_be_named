@@ -31,8 +31,9 @@ export default class PuzzleController {
 	}
 
 	mouseDown(canvas, event) {
-		const j = event.layerX / this.sketcher.tileWidth | 0;
-		const i = event.layerY / this.sketcher.tileHeight | 0;
+		const j = event.offsetX / this.sketcher.tileWidth | 0;
+		const i = event.offsetY / this.sketcher.tileHeight | 0;
+
 		if (i >= 0
 			&& j >= 0
 			&& i < this.puzzle.rows

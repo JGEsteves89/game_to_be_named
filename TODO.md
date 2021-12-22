@@ -3,6 +3,7 @@
  - [X] - Create top bar
  - [X] - Create miniature view
  - [X] - Create foot bar
+ - [X] - Make layout responsive
 
 
  - [] - Refactor the current controller

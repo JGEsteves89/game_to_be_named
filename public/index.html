@@ -7,31 +7,18 @@
 			background-repeat: repeat;
 		}
 
-		.topnav {
-			background-color: #191414;
-			overflow: hidden;
-			align-content: center;
-			display: grid;
-			z-index: 1;
-		}
-
-		.topnav a {
-			float: left;
-			color: #1db954;
-			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
-			font-size: 17px;
-			font-family: sans-serif;
-		}
-
 		.centered {
 			position: absolute;
 			left: 50%;
 			margin-right: -50%;
 			transform: translate(-38%, 8%);
-			height: 78vw;
-			width: 78vw;
+			height: 78%;
+			width: 78%;
+			max-width: 78vh;
+			max-height: 78vw;
+			user-select: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
 		}
 
 		.sidenav {
@@ -83,16 +70,16 @@
 </head>
 
 <body style="background-color: #000000;">
-	<div class="topnav">
-		<a>to-be-named</a>
-	</div>
 	<div class="sidenav">
+		<div id = "debug">
+		</div>
 	</div>
 	<canvas class="centered fillScreen" id="screen"></canvas>
 	<div class="footer">
 		<div class="miniframe">
 			<img class="minimap" src="./levels/1x1.png" />
 		</div>
+	
 	</div>
 </body>
 
