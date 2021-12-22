@@ -3,10 +3,7 @@ import { DragMovement, Direction } from './DragMovement.js';
 export default class PuzzleController {
 	constructor(puzzle, sketcher) {
 		this.puzzle = puzzle;
-		this.puzzle.yawn(2, -2);
-		this.puzzle.pitch(0, 2);
-		this.puzzle.pitch(2, 5);
-
+		this.puzzle.shuffle();
 		this.sketcher = sketcher;
 		this.selected = undefined;
 		this.drag = new DragMovement();
