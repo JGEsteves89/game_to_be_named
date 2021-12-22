@@ -4,11 +4,12 @@
  - [X] - Create miniature view
  - [X] - Create foot bar
  - [X] - Make layout responsive
+ - [X] - check if the game as finished
 
 
+ - [] - Create animation when the puzzle is finished
  - [] - Refactor the current controller
  - [] - Select miniature view to see
- - [] - check if the game as finished
  - [] - create system to shuffle puzzle
  - [] - create score
  - [] - create more simple puzzles

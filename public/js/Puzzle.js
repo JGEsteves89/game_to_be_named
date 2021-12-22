@@ -6,11 +6,13 @@ export default class Puzzle {
 
 		this.rows = puzzleSpec.rows;
 		this.cols = puzzleSpec.cols;
+		this.target = puzzleSpec.target;
 		for (let i = 0; i < this.rows; i++) {
 			for (let j = 0; j < this.cols; j++) {
-				this.tiles.push(new Tile(i, j, puzzleSpec.target[i * this.cols + j]));
+				this.tiles.push(new Tile(i, j, this.target[i * this.cols + j]));
 			}
 		}
+		this.hasFinish = false;
 	}
 
 	validateIndex(i, j) {
@@ -60,5 +62,18 @@ export default class Puzzle {
 			newI = total + newI;
 		}
 		return newI;
+	}
+
+	isComplete() {
+		for (let i = 0; i < this.rows; i++) {
+			for (let j = 0; j < this.cols; j++) {
+				if (this.get(i, j).value !== this.target[i * this.cols + j]) {
+					this.hasFinish = false;
+					return false;
+				}
+			}
+		}
+		this.hasFinish = true;
+		return true;
 	}
 }

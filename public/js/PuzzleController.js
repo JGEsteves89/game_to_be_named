@@ -90,6 +90,10 @@ export default class PuzzleController {
 		this.selected.selected = false;
 		this.drag.clear();
 		this.selected = undefined;
+
+		if (this.puzzle.isComplete()) {
+			console.log('YEAHHHH FINNISH');
+		}
 	}
 
 	move(dx, dy) {
