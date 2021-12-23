@@ -20,7 +20,8 @@ export default class Level {
 		if (!this.stopped) {
 			this.stopped = true;
 			console.log('change location was called');
-			window.location.href = '/index.html';
+			const splites = window.location.href.split('/');
+			window.location.href = window.location.href.replace(splites[splites.length - 1], 'index.html');
 			this.timer.stop();
 		}
 	}
