@@ -7,6 +7,7 @@ export default class PuzzleController {
 		this.sketcher = sketcher;
 		this.selected = undefined;
 		this.drag = new DragMovement();
+		this.touchPos = undefined;
 	}
 
 	update(deltaTime) {
@@ -28,9 +29,22 @@ export default class PuzzleController {
 	}
 
 	mouseDown(canvas, event) {
-		const j = event.offsetX / this.sketcher.tileWidth | 0;
-		const i = event.offsetY / this.sketcher.tileHeight | 0;
+		let x = 0;
+		let y = 0;
+		if (event.type === 'touchstart') {
+			const touch = event.touches[0] || event.changedTouches[0];
+			const bounds = event.target.getBoundingClientRect();
+			x = touch.clientX - bounds.left;
+			y = touch.clientY - bounds.top;
+			this.touchPos = { x, y };
+			event.preventDefault();
+		} else {
+			x = event.offsetX;
+			y = event.offsetY;
+		}
 
+		const j = x / this.sketcher.tileWidth | 0;
+		const i = y / this.sketcher.tileHeight | 0;
 		if (i >= 0
 			&& j >= 0
 			&& i < this.puzzle.rows
@@ -47,7 +61,21 @@ export default class PuzzleController {
 
 	mouseMove(canvas, event) {
 		if (this.selected) {
-			this.move(event.movementX, event.movementY);
+			let movX = 0;
+			let movY = 0;
+			if (event.type === 'touchmove') {
+				const touch = event.touches[0] || event.changedTouches[0];
+				const bounds = event.target.getBoundingClientRect();
+				const x = touch.clientX - bounds.left;
+				const y = touch.clientY - bounds.top;
+				movX = x - this.touchPos.x;
+				movY = y - this.touchPos.y;
+				this.touchPos = { x, y };
+			} else {
+				movX = event.movementX;
+				movY = event.movementY;
+			}
+			this.move(movX, movY);
 		}
 	}
 
@@ -87,6 +115,7 @@ export default class PuzzleController {
 		this.selected.selected = false;
 		this.drag.clear();
 		this.selected = undefined;
+		this.touchPos = undefined;
 
 		if (this.puzzle.isComplete()) {
 			console.log('YEAHHHH FINNISH');

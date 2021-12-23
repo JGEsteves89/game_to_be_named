@@ -31,8 +31,11 @@ Promise.all([
 	const level = new Level(controller, timer);
 
 	canvas.onmousedown = controller.mouseDown.bind(controller, canvas);
+	canvas.addEventListener('touchstart', controller.mouseDown.bind(controller, canvas));
 	window.addEventListener('mousemove', controller.mouseMove.bind(controller, canvas));
+	window.addEventListener('touchmove', controller.mouseMove.bind(controller, canvas));
 	window.addEventListener('mouseup', controller.mouseUp.bind(controller, canvas));
+	window.addEventListener('touchend', controller.mouseUp.bind(controller, canvas));
 
 	level.start();
 });
