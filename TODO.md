@@ -9,12 +9,12 @@
  - [X] - create puzzle selection
  - [X] - create more simple puzzles
  - [X] - Make work on the phone
+ - [X] - Create animation when the puzzle is finished (sort of)
+ - [X] - WONT DO - Select miniature view to see
 
 
  - [] - create score
- - [] - Create animation when the puzzle is finished
  - [] - Refactor the current controller
- - [] - Select miniature view to see
  - [] - create main menu
  - [] - check puzzle which were already resolved
  - [] - create back to selection

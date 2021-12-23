@@ -53,4 +53,12 @@ export default class PuzzleSketcher {
 			this.canvas.drawTile(tile, this.context);
 		}
 	}
+
+	runCompleteAnimation(callbackFunction) {
+		const top = +this.context.canvas.style.top.replace('px', '');
+		this.context.canvas.style.top = `${top + 15}px`;
+		if (top > 2000) {
+			callbackFunction();
+		}
+	}
 }

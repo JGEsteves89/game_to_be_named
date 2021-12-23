@@ -94,7 +94,6 @@ export default class Puzzle {
 		return true;
 	}
 
-
 	isEqual(a, b) {
 		return a.r === b.r && a.g === b.g && a.b === b.b && a.a === b.a;
 	}
